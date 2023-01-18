@@ -9,12 +9,22 @@ body {
   background: #1864ab;
 }
 
+h1 {
+  font-family: "Caveat", cursive;
+  color: #d0ebff;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 10px;
+}
+
 .memory-game {
   width: 640px;
   height: 500px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  perspective: 1000px;
 }
 
 .memory-card {
@@ -23,11 +33,17 @@ body {
   margin: 5px;
   position: relative;
   transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 
-memory-card:active {
+.memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
 }
 
 .front-face,
@@ -40,4 +56,9 @@ memory-card:active {
   border-radius: 5px;
   border: 4px solid black;
   background: #d0ebff;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
 }
